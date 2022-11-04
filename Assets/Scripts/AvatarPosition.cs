@@ -10,19 +10,19 @@ public class AvatarPosition : MonoBehaviour
     float CurrentProgress = 0f;
     bool IsBusy = true;
     
-    float x;
-    float y;
-    float z;
-    Vector3 pos;
+    //float x;
+    //float y;
+    //float z;
+    //Vector3 pos;
 
     [SerializeField] HapticEffectSO HBEffect;
     void Start()
     {
-        x = Random.Range(0f, 10f);
-        y = 0f;
-        z = Random.Range(0f, -10f);
-        pos = new Vector3(x, y, z);
-        transform.position = pos;
+        //x = Random.Range(0f, 10f);
+        //y = 0f;
+        //z = Random.Range(0f, -10f);
+        //pos = new Vector3(x, y, z);
+        //transform.position = pos;
     }
 
     void Update()
