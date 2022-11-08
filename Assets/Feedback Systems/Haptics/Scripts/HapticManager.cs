@@ -63,7 +63,7 @@ public class HapticManager : MonoBehaviour
             vibSpeedMotor = Mathf.Clamp01(vibSpeedComponent + vibSpeedMotor);
 
             //Debug.Log(highSpeedComponent);
-            Debug.Log("Player is in the zone now");
+            //Debug.Log("Player is in the zone now");
         }
 
         //Gamepad.current.SetMotorSpeeds(lowSpeedMotor, highSpeedMotor);
