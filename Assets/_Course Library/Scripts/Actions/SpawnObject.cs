@@ -1,24 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-/// <summary>
-/// Spawn an object at a transform's position
-/// </summary>
+
 public class SpawnObject : MonoBehaviour
 {
-    [Tooltip("The object that will be spawned")]
-    public GameObject originalObject = null;
+    public List<GameObject> Trialss = new List<GameObject>();
+    int randomIndex;
 
-    [Tooltip("The transform where the object is spanwed")]
-    public Transform spawnPosition = null;
-
-    public void Spawn()
+    public void SpawnTrial()
     {
-        Instantiate(originalObject, spawnPosition.position, spawnPosition.rotation);
+        randomIndex = Random.Range(0, Trialss.Count);
+        //GameObject currentTrial = Trialss[randomIndex];
+        Trialss[randomIndex].SetActive(true);
+        Debug.Log($"Trial that is activated is: {Trialss[randomIndex]}");
+        Trialss[randomIndex].GetComponent<RandomAvatarSpawner>().SpawnAvatar();
     }
 
-    private void OnValidate()
+    public void DeactivateTrial()
     {
-        if (!spawnPosition)
-            spawnPosition = transform;
+        Trialss[randomIndex].SetActive(false);
+        Debug.Log("The Trial is set non active");
+        Trialss[randomIndex].GetComponent<RandomAvatarSpawner>().RemoveAvatar();
+    }
+
+    public void RemoveTrialFromList()
+    {
+        Trialss.Remove(Trialss[randomIndex]);
+        Debug.Log("The Trial is removed from the list");
     }
 }
