@@ -5,28 +5,71 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public List<GameObject> Trialss = new List<GameObject>();
+    public List<GameObject> Trials = new List<GameObject>();
+    public List<GameObject> Block1 = new List<GameObject>();
+    public List<GameObject> Block2 = new List<GameObject>();
+    public List<GameObject> Block3 = new List<GameObject>();
+    public List<GameObject> Block4 = new List<GameObject>();
+    public List<List<GameObject>> ListOfLists = new List<List<GameObject>>();
+    public List<GameObject> chosenList;
+
+    int randomList;
     int randomIndex;
 
-    public void SpawnTrial()
+    bool firstBlock = false;
+
+    public void ChooseFirstList()
     {
-        randomIndex = Random.Range(0, Trialss.Count);
+        chosenList = Block1;
+        firstBlock = true;
+
+        ListOfLists.Add(Block2);
+        ListOfLists.Add(Block3);
+        ListOfLists.Add(Block4);
+        Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
+    }
+
+    public void ChooseNextList()
+    {
+        randomList = Random.Range(0, ListOfLists.Count);
+        chosenList = ListOfLists[randomList];
+        firstBlock = false;
+    }
+
+    public void SpawnTrial()
+    {   
+        Debug.Log($"The list that is chosen:  {chosenList}");
+        randomIndex = Random.Range(0, chosenList.Count-1);
+        //randomIndex = Random.Range(0, Trials.Count);
+
         //GameObject currentTrial = Trialss[randomIndex];
-        Trialss[randomIndex].SetActive(true);
-        Debug.Log($"Trial that is activated is: {Trialss[randomIndex]}");
-        Trialss[randomIndex].GetComponent<RandomAvatarSpawner>().SpawnAvatar();
+
+        chosenList[randomIndex].SetActive(true);
+        Debug.Log($"Trial that is activated is: {chosenList[randomIndex]}");
+        chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().SpawnAvatar(chosenList[randomIndex]);
+        //Trials[randomIndex].GetComponent<SavePosition>().SaveTrial(Trials[randomIndex]);
     }
 
     public void DeactivateTrial()
     {
-        Trialss[randomIndex].SetActive(false);
-        Debug.Log("The Trial is set non active");
-        Trialss[randomIndex].GetComponent<RandomAvatarSpawner>().RemoveAvatar();
+        chosenList[randomIndex].SetActive(false);
+        Debug.Log($"The Trial {chosenList[randomIndex]} is set non active");
+        chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().RemoveAvatar();
     }
 
     public void RemoveTrialFromList()
     {
-        Trialss.Remove(Trialss[randomIndex]);
-        Debug.Log("The Trial is removed from the list");
+        Debug.Log($"The Trial {chosenList[randomIndex]} will be removed from the list"); 
+        chosenList.Remove(chosenList[randomIndex]);        
+
+        if (chosenList.Count == 0)
+        {
+            if (firstBlock == false)
+            {
+                ListOfLists.Remove(ListOfLists[randomList]);
+            }
+            Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
+            ChooseNextList();
+        }
     }
 }

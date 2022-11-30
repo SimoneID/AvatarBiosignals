@@ -15,11 +15,11 @@ public class SavePosition : MonoBehaviour
     [SerializeField] float _interval = 1f;
     float _time;
 
-    void Start()
-    {
-        _time = 0f;
-        Create();
-    }
+    //void Start()
+    //{
+    //    _time = 0f;
+    //    Create();
+    //}
 
     void Update()
     {
@@ -31,13 +31,23 @@ public class SavePosition : MonoBehaviour
         }
     }
 
-    public void Create()
+    public void Create(string trialName)
     {
-        string fname = "Testfile" + ".csv";
+        string fname = trialName + ".csv";
         string path = Path.Combine(Application.persistentDataPath, fname);
         file = new StreamWriter(path, true);
 
         file.WriteLine("xPos , yPos , zPos , xRot , yRot , zRot");
+    }
+
+    public void SaveTrial(GameObject thisTrial, Vector3 thisAvatarLoc)
+    {
+        _time = 0f;
+        Create(thisTrial.name);
+        
+        file.WriteLine($"Trial started: {thisTrial}");
+        file.WriteLine($"Avatar location: {thisAvatarLoc}");
+        file.Flush();
     }
 
     public void Save()

@@ -57,7 +57,7 @@ public class ThermalCommunication : MonoBehaviour
     IEnumerator PostRequest(string uri)
     {
         WWWForm form = new WWWForm();
-        form.AddField("target", "-30");
+        form.AddField("target", "30");
 
         using (UnityWebRequest www = UnityWebRequest.Post(uri, form))
         {

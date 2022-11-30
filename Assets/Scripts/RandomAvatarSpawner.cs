@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class RandomAvatarSpawner : MonoBehaviour
 {
-    public GameObject[] myAvatars;
-    GameObject clone;
-    int randomIndex;
+    public List<GameObject> Avatars = new List<GameObject>();
+    int randomGender;
+    public static Vector3 LocationAvatar;
 
     // Start is called before the first frame update
-    public void SpawnAvatar()
+    public void SpawnAvatar(GameObject thisTrial)
     {
-        randomIndex = Random.Range(0, myAvatars.Length);
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(0, 10), 0, Random.Range(-10, 0));
+        randomGender = Random.Range(0, Avatars.Count);
+        Avatars[randomGender].SetActive(true);
+        Avatars[randomGender].transform.position = new Vector3(Random.Range(0, 10), 0, Random.Range(-10, 0));
+        Debug.Log($"The avatar that is activated: {Avatars[randomGender]} at {Avatars[randomGender].transform.position}");
 
-        clone = Instantiate(myAvatars[randomIndex], randomSpawnPosition, Quaternion.identity);
+        thisTrial.GetComponent<SavePosition>().SaveTrial(thisTrial, Avatars[randomGender].transform.position);
+
+        //Vector3 randomSpawnPosition = new Vector3(Random.Range(0, 10), 0, Random.Range(-10, 0));
+        //clone = Instantiate(Avatars[randomGender], randomSpawnPosition, Quaternion.identity);
     }
 
     public void RemoveAvatar()
     {
-        myAvatars[randomIndex].SetActive(false);
-        Destroy(clone);
+        Avatars[randomGender].SetActive(false);
+        Debug.Log($"The avatar that is de-activated: {Avatars[randomGender]}");
     }
 }
