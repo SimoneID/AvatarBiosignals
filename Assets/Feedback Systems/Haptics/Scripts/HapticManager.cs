@@ -8,6 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HapticManager : MonoBehaviour
 {
+    public float vibInt;
+    
     [SerializeField] public XRBaseController leftController;
     [SerializeField] public XRBaseController rightController;
     public static HapticManager Instance { get; private set; } = null;
@@ -61,6 +63,7 @@ public class HapticManager : MonoBehaviour
             }
 
             vibSpeedMotor = Mathf.Clamp01(vibSpeedComponent + vibSpeedMotor);
+            vibInt = vibSpeedMotor;
 
             //Debug.Log(highSpeedComponent);
             //Debug.Log("Player is in the zone now");

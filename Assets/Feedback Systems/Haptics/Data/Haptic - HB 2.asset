@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Duration: 1.5
-  VibrationIntensity: 0.1
+  VibrationIntensity: 0.5
   VibrationCurve:
     serializedVersion: 2
     m_Curve:

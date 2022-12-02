@@ -25,17 +25,20 @@ public class AvatarPosition : MonoBehaviour
         //transform.position = pos;
     }
 
-    void Update()
-    {    
-        CurrentProgress += Time.deltaTime / (IsBusy ? ActionTime : WaitTime);
+    //void Update()
+    //{    
+    //    CurrentProgress += Time.deltaTime / (IsBusy ? ActionTime : WaitTime);
 
-        if (CurrentProgress >= 1f)
-        {
-            if (!IsBusy)
-                HapticManager.PlayEffect(HBEffect, Origin.transform.position);
+    //    if (CurrentProgress >= 1f && gameObject.activeSelf == true)
+    //    {
+    //        if (!IsBusy)
+    //            HapticManager.PlayEffect(HBEffect, Origin.transform.position);
 
-            IsBusy = !IsBusy;
-            CurrentProgress = 0f;
-        }        
-    }
+    //        IsBusy = !IsBusy;
+    //        CurrentProgress = 0f;
+    //    } else if (gameObject.activeSelf == false)
+    //    {
+    //        HapticManager.StopEffect(HBEffect);
+    //    }        
+    //}
 }

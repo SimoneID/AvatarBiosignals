@@ -14,6 +14,10 @@ public class SavePosition : MonoBehaviour
 
     [SerializeField] float _interval = 1f;
     float _time;
+    bool streamOpen = false;
+    float avatarDist;
+    public Vector3 avatarLoc;
+    float vibIntensity;
 
     //void Start()
     //{
@@ -33,20 +37,28 @@ public class SavePosition : MonoBehaviour
 
     public void Create(string trialName)
     {
+        if (streamOpen == true)
+        {
+            file.Close();
+            streamOpen = false;
+        }
         string fname = trialName + ".csv";
+        //string fname = "TestFile.csv";
         string path = Path.Combine(Application.persistentDataPath, fname);
         file = new StreamWriter(path, true);
-
-        file.WriteLine("xPos , yPos , zPos , xRot , yRot , zRot");
+        streamOpen = true;
     }
 
-    public void SaveTrial(GameObject thisTrial, Vector3 thisAvatarLoc)
+    public void SaveTrial(GameObject thisTrial, Vector3 thisAvatarLoc, GameObject activeAvatar)
     {
         _time = 0f;
+        avatarLoc = thisAvatarLoc;
         Create(thisTrial.name);
         
         file.WriteLine($"Trial started: {thisTrial}");
+        file.WriteLine($"Avatar activated: {activeAvatar}");
         file.WriteLine($"Avatar location: {thisAvatarLoc}");
+        file.WriteLine("xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt");
         file.Flush();
     }
 
@@ -59,6 +71,10 @@ public class SavePosition : MonoBehaviour
         yRot = MainCamera.transform.rotation.y;
         zRot = MainCamera.transform.rotation.z;
 
+        avatarDist = Vector3.Distance(avatarLoc, MainCamera.transform.position);
+        vibIntensity = GameObject.FindWithTag("HapticManager").GetComponent<HapticManager>().vibInt;
+
+
         //string filePath = @"C:\Users\simone\Documents\testfile.csv"; //On the PC at CWI
         //string filePath = @"C:\Users\20173880\Documents\testfile.csv"; //On my laptop
 
@@ -66,12 +82,12 @@ public class SavePosition : MonoBehaviour
         //Debug.Log("Values of position are" + xPos + "," + yPos + "," + zPos);
         //Debug.Log("Values of the rotation are" + xRot + "," + yRot + "," + zRot);
         //File.AppendAllText(filePath, xPos + "," + yPos + "," + zPos + "," + xRot + "," + yRot + "," + zRot + Environment.NewLine);
-        
+
         //string fname = System.DateTime.Now.ToString("HH-mm-ss") + ".csv";
-        
+
 
         //file.WriteLine("Test");
-        file.WriteLine(xPos + "," + yPos + "," + zPos + "," + xRot + "," + yRot + "," + zRot);
+        file.WriteLine(xPos + "," + yPos + "," + zPos + "," + xRot + "," + yRot + "," + zRot + "," + avatarDist + "," + vibIntensity);
         file.Flush();
         //file.Close();
     }

@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 55981178}
   m_Layer: 0
   m_Name: Haptic Manager
-  m_TagString: Untagged
+  m_TagString: HapticManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831c21f0aa315044b0f61a1cc95e1ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vibInt: 0
   leftController: {fileID: 364578165}
   rightController: {fileID: 712900741}
 --- !u!4 &55981179
@@ -703,6 +704,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!4 &152878610
 Transform:
   m_ObjectHideFlags: 0
@@ -2016,6 +2018,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &350151640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,6 +2042,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &350942070
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3202,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &475702024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3217,6 +3226,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &485159820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,6 +3275,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &485159823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3286,6 +3299,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &514790120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,6 +4828,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &701179704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4835,6 +4852,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &712900736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5751,6 +5769,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &769089219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5772,6 +5793,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1001 &787122364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6159,6 +6181,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &874178008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6180,6 +6205,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &875972537
 GameObject:
   m_ObjectHideFlags: 0
@@ -7412,6 +7438,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1086615573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7433,6 +7462,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1093786614
 GameObject:
   m_ObjectHideFlags: 0
@@ -7481,6 +7511,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1093786617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7502,6 +7535,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1111385228
 GameObject:
   m_ObjectHideFlags: 0
@@ -9056,13 +9090,19 @@ MonoBehaviour:
   Block1:
   - {fileID: 874178005}
   - {fileID: 1471767740}
+  - {fileID: 1467090836}
+  - {fileID: 874178005}
+  - {fileID: 1471767740}
+  - {fileID: 1467090836}
+  - {fileID: 874178005}
+  - {fileID: 1471767740}
+  - {fileID: 1467090836}
   Block2:
   - {fileID: 1086615570}
   Block3:
   - {fileID: 769089216}
   Block4:
   - {fileID: 475702021}
-  chooseList: 000000000100000002000000
   chosenList: []
 --- !u!4 &1463633830
 Transform:
@@ -9127,6 +9167,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1467090839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9148,6 +9191,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1471767740
 GameObject:
   m_ObjectHideFlags: 0
@@ -9196,6 +9240,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1471767743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,6 +9264,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1480641863
 GameObject:
   m_ObjectHideFlags: 0
@@ -9576,6 +9624,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1651955478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9597,6 +9648,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1692177140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9645,6 +9697,9 @@ MonoBehaviour:
   Avatars:
   - {fileID: 1707879887}
   - {fileID: 1699533789}
+  ActionTime: 1.5
+  WaitTime: 2
+  HBEffect: {fileID: 11400000, guid: 1901fb0ff2ed5d446a0a79f4204f95fd, type: 2}
 --- !u!114 &1692177143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9666,6 +9721,7 @@ MonoBehaviour:
   MainCamera: {fileID: 920921510}
   LoadPosition: {x: 0, y: 0, z: 0}
   _interval: 1
+  avatarLoc: {x: 0, y: 0, z: 0}
 --- !u!1 &1699533789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8934839076286239568, guid: 3fb0584a46d734046992e19b70390f54,
@@ -10098,7 +10154,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
