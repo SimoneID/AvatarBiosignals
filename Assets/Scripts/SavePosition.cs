@@ -91,4 +91,9 @@ public class SavePosition : MonoBehaviour
         file.Flush();
         //file.Close();
     }
+
+    private void OnDestroy()
+    {
+        file.Close();
+    }
 }

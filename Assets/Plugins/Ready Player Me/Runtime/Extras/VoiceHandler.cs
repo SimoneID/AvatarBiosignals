@@ -3,6 +3,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using static ReadyPlayerMe.ExtensionMethods;
 
 #if UNITY_ANDROID
@@ -38,6 +39,7 @@ namespace ReadyPlayerMe
         private int mouthOpenBlendShapeIndexOnTeethMesh = -1;
 
         // ReSharper disable InconsistentNaming
+        //public List<AudioClip> posMaleAudio = new List<AudioClip>();
         public AudioClip AudioClip;
         public AudioSource AudioSource;
         public AudioProviderType AudioProvider = AudioProviderType.Microphone;
@@ -100,8 +102,8 @@ namespace ReadyPlayerMe
 #endif
         }
 
-        private void SetAudioClipSource()
-        {
+        public void SetAudioClipSource()
+        {        
             AudioSource.clip = AudioClip;
             AudioSource.loop = true; //was false
             AudioSource.mute = false;

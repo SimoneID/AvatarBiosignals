@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public List<GameObject> Trials = new List<GameObject>();
+    //public List<GameObject> Trials = new List<GameObject>();
     public List<GameObject> Block1 = new List<GameObject>();
     public List<GameObject> Block2 = new List<GameObject>();
     public List<GameObject> Block3 = new List<GameObject>();
     public List<GameObject> Block4 = new List<GameObject>();
     public List<List<GameObject>> ListOfLists = new List<List<GameObject>>();
     public List<GameObject> chosenList;
+
+    public string currentTrial;
+    public GameObject IPQStart;
 
     int randomList;
     int randomIndex;
@@ -31,9 +34,16 @@ public class SpawnObject : MonoBehaviour
 
     public void ChooseNextList()
     {
+        if (firstBlock == false)
+        {
+            ListOfLists.Remove(ListOfLists[randomList]);
+        }
+        Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
+
         randomList = Random.Range(0, ListOfLists.Count);
         chosenList = ListOfLists[randomList];
         firstBlock = false;
+        //SpawnTrial();
     }
 
     public void SpawnTrial()
@@ -42,11 +52,12 @@ public class SpawnObject : MonoBehaviour
         randomIndex = Random.Range(0, chosenList.Count-1);
         //randomIndex = Random.Range(0, Trials.Count);
 
-        //GameObject currentTrial = Trialss[randomIndex];
+        currentTrial = chosenList[randomIndex].ToString();
 
         chosenList[randomIndex].SetActive(true);
         Debug.Log($"Trial that is activated is: {chosenList[randomIndex]}");
-        chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().SpawnAvatar(chosenList[randomIndex]);
+        //chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().SpawnAvatar(chosenList[randomIndex]);
+        GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().SpawnAvatarObject(chosenList[randomIndex]);
         //Trials[randomIndex].GetComponent<SavePosition>().SaveTrial(Trials[randomIndex]);
     }
 
@@ -54,22 +65,21 @@ public class SpawnObject : MonoBehaviour
     {
         chosenList[randomIndex].SetActive(false);
         Debug.Log($"The Trial {chosenList[randomIndex]} is set non active");
-        chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().RemoveAvatar();
+        //chosenList[randomIndex].GetComponent<RandomAvatarSpawner>().RemoveAvatar();
+        GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().RemoveAvatar();
     }
 
     public void RemoveTrialFromList()
     {
         Debug.Log($"The Trial {chosenList[randomIndex]} will be removed from the list"); 
-        chosenList.Remove(chosenList[randomIndex]);        
+        chosenList.Remove(chosenList[randomIndex]);
 
         if (chosenList.Count == 0)
         {
-            if (firstBlock == false)
-            {
-                ListOfLists.Remove(ListOfLists[randomList]);
-            }
-            Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
-            ChooseNextList();
+            IPQStart.SetActive(true);
+        } else
+        {
+            SpawnTrial();
         }
     }
 }

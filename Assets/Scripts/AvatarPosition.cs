@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AvatarPosition : MonoBehaviour
 {
-    [SerializeField] Transform Origin;
-    [SerializeField] float ActionTime = 1.5f;
-    [SerializeField] float WaitTime = 2f;
-    float CurrentProgress = 0f;
-    bool IsBusy = true;
+    //[SerializeField] Transform Origin;
+    //[SerializeField] float ActionTime = 1.5f;
+    //[SerializeField] float WaitTime = 2f;
+    //float CurrentProgress = 0f;
+    //bool IsBusy = true;
     
     //float x;
     //float y;
     //float z;
     //Vector3 pos;
 
-    [SerializeField] HapticEffectSO HBEffect;
+    //[SerializeField] HapticEffectSO HBEffect;
     void Start()
     {
         //x = Random.Range(0f, 10f);

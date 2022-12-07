@@ -8,6 +8,10 @@ TagManager:
   - Box
   - Need
   - HapticManager
+  - IPQStart
+  - NegativeAvatar
+  - NeutralAvatar
+  - PositiveAvatar
   layers:
   - Default
   - TransparentFX
