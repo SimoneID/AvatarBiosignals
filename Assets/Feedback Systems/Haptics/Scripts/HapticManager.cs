@@ -52,6 +52,7 @@ public class HapticManager : MonoBehaviour
         for (int index = 0; index < ActiveEffects.Count; ++index)
         {
             var effect = ActiveEffects[index];
+            //Debug.Log($"current haptic effect: {effect}");
 
             // tick the effect and clean up if finished
             float vibSpeedComponent = 0f;
@@ -67,10 +68,11 @@ public class HapticManager : MonoBehaviour
 
             //Debug.Log(highSpeedComponent);
             //Debug.Log("Player is in the zone now");
+            leftController.SendHapticImpulse(vibSpeedMotor, 1f);
         }
 
         //Gamepad.current.SetMotorSpeeds(lowSpeedMotor, highSpeedMotor);
-        leftController.SendHapticImpulse(vibSpeedMotor, 1f);
+        //leftController.SendHapticImpulse(vibSpeedMotor, 1f);
     }
 
     void OnDestroy()
@@ -93,6 +95,11 @@ public class HapticManager : MonoBehaviour
 
     void StopEffect_Internal(HapticEffectSO effect)
     {
-        ActiveEffects.Remove(effect);
+        //ActiveEffects.Remove(effect);
+        ActiveEffects.Clear();
+        Debug.Log("ActiveEffects is cleared");
+        leftController.SendHapticImpulse(0f, 0f);
+        vibInt = 0;
+        //rightController.SendHapticImpulse(0f, 0f);
     }
 }

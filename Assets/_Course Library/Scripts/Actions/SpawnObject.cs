@@ -71,7 +71,7 @@ public class SpawnObject : MonoBehaviour
 
     public void RemoveTrialFromList()
     {
-        Debug.Log($"The Trial {chosenList[randomIndex]} will be removed from the list"); 
+        Debug.Log($"The Trial {chosenList[randomIndex]} will be removed from the list");
         chosenList.Remove(chosenList[randomIndex]);
 
         if (chosenList.Count == 0)
