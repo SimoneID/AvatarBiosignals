@@ -52,7 +52,7 @@ public class SaveAnswersPB : MonoBehaviour
     {
         trialName = GameObject.Find("RandomTrialSpawner").GetComponent<SpawnObject>().currentTrial;
         //blockName = GameObject.Find("RandomTrialSpawner").GetComponent<SpawnObject>().chosenList;
-        answersPBFile.WriteLine(trialName + "," + SliderQ1.value + "," + SliderQ2.value + "," + SliderQ3.value + "," + SliderQ4.value + "," + SliderQ5.value + "," + SliderQ6.value + "," + SliderQ7.value + "," + SliderQ8.value + "," + SliderQ9.value + "," + SliderQ10.value + "," + SliderQ11.value + "," + SliderQ12.value + "," + SliderQ13.value + "," + SliderQ14.value);
+        answersPBFile.WriteLine($"{trialName},{SliderQ1.value},{SliderQ2.value},{SliderQ3.value},{SliderQ4.value},{SliderQ5.value},{SliderQ6.value},{SliderQ7.value},{SliderQ8.value},{SliderQ9.value},{SliderQ10.value},{SliderQ11.value},{SliderQ12.value},{SliderQ13.value},{SliderQ14.value}");
         answersPBFile.Flush();
         Debug.Log("Answers written to PB file");
 

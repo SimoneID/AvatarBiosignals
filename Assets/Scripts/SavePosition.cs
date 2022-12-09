@@ -21,6 +21,8 @@ public class SavePosition : MonoBehaviour
     float avatarDist;
     public Vector3 avatarLoc;
     float vibIntensity;
+    double thermalCurrent;
+    string thermalTarget;
 
     //void Start()
     //{
@@ -70,7 +72,7 @@ public class SavePosition : MonoBehaviour
         file.WriteLine($"Trial started: {thisTrial}");
         file.WriteLine($"Avatar activated: {activeAvatar}");
         file.WriteLine($"Avatar location: {thisAvatarLoc}");
-        file.WriteLine("trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt");
+        file.WriteLine("trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt, thermalCurrent, thermalTarget");
         file.Flush();
     }
 
@@ -86,8 +88,17 @@ public class SavePosition : MonoBehaviour
         avatarDist = Vector3.Distance(avatarLoc, MainCamera.transform.position);
         vibIntensity = GameObject.FindWithTag("HapticManager").GetComponent<HapticManager>().vibInt;
 
-        //file.WriteLine(xPos + "," + yPos + "," + zPos + "," + xRot + "," + yRot + "," + zRot + "," + avatarDist + "," + vibIntensity);
-        file.WriteLine($"{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity}");
+        if (GameObject.FindGameObjectWithTag("ThermalManager") != null)
+        {
+            thermalCurrent = GameObject.FindWithTag("ThermalManager").GetComponent<ThermalCommunication>().currentTemp;
+            thermalTarget = GameObject.FindWithTag("ThermalManager").GetComponent<ThermalCommunication>().communicatedTemp;
+
+            file.WriteLine($"{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity},{thermalCurrent},{thermalTarget}");
+        } else
+        {
+            file.WriteLine($"{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity}, NA, NA");
+        }
+        
         file.Flush();
         //file.Close();
     }

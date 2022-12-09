@@ -12,6 +12,7 @@ TagManager:
   - NegativeAvatar
   - NeutralAvatar
   - PositiveAvatar
+  - ThermalManager
   layers:
   - Default
   - TransparentFX

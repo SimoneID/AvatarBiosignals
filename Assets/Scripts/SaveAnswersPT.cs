@@ -38,7 +38,7 @@ public class SaveAnswersPT : MonoBehaviour
     public void SavePTAnswers()
     {
         trialName = GameObject.Find("RandomTrialSpawner").GetComponent<SpawnObject>().currentTrial;
-        answersPTFile.WriteLine(trialName + "," + SliderQ1.value + "," + SliderQ2.value + "," + SliderQ3.value);
+        answersPTFile.WriteLine($"{trialName},{SliderQ1.value},{SliderQ2.value},{SliderQ3.value}");
         answersPTFile.Flush();
         Debug.Log("Answers written to file");
 
