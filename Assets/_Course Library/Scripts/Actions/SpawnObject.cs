@@ -15,20 +15,35 @@ public class SpawnObject : MonoBehaviour
 
     public string currentTrial;
     public GameObject IPQStart;
+    public GameObject ClosingCanvas;
+    float closingtime = 0f;
+    bool needtoClose = false;
 
     int randomList;
     int randomIndex;
 
     bool firstBlock = false;
 
+    void Update()
+    {
+        if (needtoClose == true)
+        {
+            closingtime += Time.deltaTime;
+        }
+        if (closingtime >= 5f)
+        {
+            Application.Quit();
+        }
+    }
+
     public void ChooseFirstList()
     {
-        chosenList = Block1;
+        chosenList = Block4;
         firstBlock = true;
 
         ListOfLists.Add(Block2);
         ListOfLists.Add(Block3);
-        ListOfLists.Add(Block4);
+        ListOfLists.Add(Block1);
         Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
     }
 
@@ -40,10 +55,18 @@ public class SpawnObject : MonoBehaviour
         }
         Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
 
-        randomList = Random.Range(0, ListOfLists.Count);
-        chosenList = ListOfLists[randomList];
-        firstBlock = false;
-        //SpawnTrial();
+        if (ListOfLists.Count > 0)
+        {
+            randomList = Random.Range(0, ListOfLists.Count);
+            chosenList = ListOfLists[randomList];
+            firstBlock = false;
+            SpawnTrial();
+        } else
+        {
+            ClosingCanvas.SetActive(true);
+            needtoClose = true;
+        }
+
     }
 
     public void SpawnTrial()

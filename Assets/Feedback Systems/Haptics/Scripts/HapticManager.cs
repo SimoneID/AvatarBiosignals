@@ -96,7 +96,7 @@ public class HapticManager : MonoBehaviour
     void StopEffect_Internal(HapticEffectSO effect)
     {
         //ActiveEffects.Remove(effect);
-        ActiveEffects.Clear();
+        if (ActiveEffects.Count > 0) { ActiveEffects.Clear(); } 
         Debug.Log("ActiveEffects is cleared");
         leftController.SendHapticImpulse(0f, 0f);
         vibInt = 0;

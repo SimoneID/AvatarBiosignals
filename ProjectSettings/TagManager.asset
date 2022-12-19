@@ -13,6 +13,7 @@ TagManager:
   - NeutralAvatar
   - PositiveAvatar
   - ThermalManager
+  - TeleportLogger
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class ThermalCommunication : MonoBehaviour
     {
         _time = 0f;
         //StartCoroutine(PostRequest($"http://{hostNameToContact}/power")); //to set heating power
-        StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "26")); //to set target temperature using PID
+        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "0")); //to set target temperature using PID
     }
 
     void Update()
@@ -50,28 +50,29 @@ public class ThermalCommunication : MonoBehaviour
 
     public void setNewTemp()
     {
-        avatarDistance = Vector3.Distance(GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().LocationAvatar, MainCamera.transform.position);
+        Vector2 playerLoc = new Vector2(MainCamera.transform.position.x, MainCamera.transform.position.z);
+        avatarDistance = Vector2.Distance(GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().avatarFlatLocation, playerLoc);
         if (avatarDistance < 0.46)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "36"));
+            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "44"));
         }
         else if (avatarDistance >= 0.46 && avatarDistance < 1.22)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "34"));
+            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "42"));
         }
         else if (avatarDistance >= 1.22 && avatarDistance < 3.70)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "32"));
+            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "38"));
         }
         else if (avatarDistance >= 3.70)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "30"));
+            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "34"));
         }
     }
 
     public void setNeuTemp()
     {
-        StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "26"));
+        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "0"));
     }
 
     IEnumerator GetRequest(string uri)

@@ -16,6 +16,7 @@ public class SavePosition : MonoBehaviour
     [SerializeField] float _interval = 1f;
     float _time;
     float trialTime;
+    int trialNum;
     public bool timeOver = false;
     bool streamOpen = false;
     float avatarDist;
@@ -23,6 +24,8 @@ public class SavePosition : MonoBehaviour
     float vibIntensity;
     double thermalCurrent;
     string thermalTarget;
+    int numTeleports;
+    string chosenMat;
 
     //void Start()
     //{
@@ -41,11 +44,11 @@ public class SavePosition : MonoBehaviour
             _time -= _interval;
         }
 
-        if (trialTime >= 30f && timeOver == false)
-        {
-            TimeWarningCanvas.SetActive(true);
-            timeOver = true;
-        }
+        //if (trialTime >= 30f && timeOver == false)
+        //{
+        //    TimeWarningCanvas.SetActive(true);
+        //    timeOver = true;
+        //}
     }
 
     public void Create(string trialName)
@@ -62,17 +65,18 @@ public class SavePosition : MonoBehaviour
         streamOpen = true;
     }
 
-    public void SaveTrial(GameObject thisTrial, Vector3 thisAvatarLoc, GameObject activeAvatar)
+    public void SaveTrial(int trialNumber, GameObject thisTrial, Vector3 thisAvatarLoc, GameObject activeAvatar)
     {
         _time = 0f;
         trialTime = 0f;
         avatarLoc = thisAvatarLoc;
+        trialNum = trialNumber;
         Create(thisTrial.name);
         
         file.WriteLine($"Trial started: {thisTrial}");
         file.WriteLine($"Avatar activated: {activeAvatar}");
         file.WriteLine($"Avatar location: {thisAvatarLoc}");
-        file.WriteLine("trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt, thermalCurrent, thermalTarget");
+        file.WriteLine("trialNum, trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt, thermalCurrent, thermalTarget");
         file.Flush();
     }
 
@@ -85,18 +89,22 @@ public class SavePosition : MonoBehaviour
         yRot = MainCamera.transform.rotation.y;
         zRot = MainCamera.transform.rotation.z;
 
-        avatarDist = Vector3.Distance(avatarLoc, MainCamera.transform.position);
+        Vector2 playerLoc = new Vector2(MainCamera.transform.position.x, MainCamera.transform.position.z);
+        avatarDist = Vector2.Distance(GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().avatarFlatLocation, playerLoc);
+
         vibIntensity = GameObject.FindWithTag("HapticManager").GetComponent<HapticManager>().vibInt;
 
         if (GameObject.FindGameObjectWithTag("ThermalManager") != null)
         {
             thermalCurrent = GameObject.FindWithTag("ThermalManager").GetComponent<ThermalCommunication>().currentTemp;
             thermalTarget = GameObject.FindWithTag("ThermalManager").GetComponent<ThermalCommunication>().communicatedTemp;
+            numTeleports = GameObject.FindWithTag("TeleportLogger").GetComponent<LogTeleport>().numberOfTeleports;
+            chosenMat = GameObject.FindWithTag("TeleportLogger").GetComponent<LogTeleport>().mat;
 
-            file.WriteLine($"{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity},{thermalCurrent},{thermalTarget}");
+            file.WriteLine($"{trialNum},{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity},{thermalCurrent},{thermalTarget}, {numTeleports}, {chosenMat}");
         } else
         {
-            file.WriteLine($"{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity}, NA, NA");
+            file.WriteLine($"{trialNum},{trialTime},{xPos},{yPos},{zPos},{xRot},{yRot},{zRot},{avatarDist},{vibIntensity}, NA, NA, {numTeleports}, {chosenMat}");
         }
         
         file.Flush();
