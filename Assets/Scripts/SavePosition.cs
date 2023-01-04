@@ -44,11 +44,11 @@ public class SavePosition : MonoBehaviour
             _time -= _interval;
         }
 
-        //if (trialTime >= 30f && timeOver == false)
-        //{
-        //    TimeWarningCanvas.SetActive(true);
-        //    timeOver = true;
-        //}
+        if (trialTime >= 60f && timeOver == false)
+        {
+            TimeWarningCanvas.SetActive(true);
+            timeOver = true;
+        }
     }
 
     public void Create(string trialName)
@@ -76,8 +76,10 @@ public class SavePosition : MonoBehaviour
         file.WriteLine($"Trial started: {thisTrial}");
         file.WriteLine($"Avatar activated: {activeAvatar}");
         file.WriteLine($"Avatar location: {thisAvatarLoc}");
-        file.WriteLine("trialNum, trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt, thermalCurrent, thermalTarget");
+        file.WriteLine("trialNum, trialTime, xPos , yPos , zPos , xRot , yRot , zRot, DisToAv, vibInt, thermalCurrent, thermalTarget, numTeleports, chosenMat");
         file.Flush();
+
+        GameObject.FindWithTag("TeleportLogger").GetComponent<LogTeleport>().setStart();
     }
 
     public void Save()

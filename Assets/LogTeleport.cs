@@ -16,5 +16,11 @@ public class LogTeleport : MonoBehaviour
         mat = chosenMat.name;
     }
 
+    public void setStart()
+    {
+        numberOfTeleports = 0;
+        mat = "none";
+    }
+
 
 }

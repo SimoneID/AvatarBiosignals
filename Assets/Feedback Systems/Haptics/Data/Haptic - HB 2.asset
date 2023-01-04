@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Haptic - HB 2
   m_EditorClassIdentifier: 
   Type: 1
-  Duration: 1.5
-  VibrationIntensity: 0.8
+  Duration: 0.8
+  VibrationIntensity: 0.7
   VibrationCurve:
     serializedVersion: 2
     m_Curve:
@@ -28,7 +28,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.2
+      time: 0.13305591
       value: 0
       inSlope: 0
       outSlope: 0
@@ -37,8 +37,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.275
-      value: 0.15
+      time: 0.18295188
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -46,7 +46,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.35
+      time: 0.23284784
       value: 0
       inSlope: 0
       outSlope: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.4
+      time: 0.26611182
       value: 0
       inSlope: -0.033255316
       outSlope: -0.033255316
@@ -64,7 +64,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 1
     - serializedVersion: 3
-      time: 0.45
+      time: 0.2993758
       value: -0.1
       inSlope: 0
       outSlope: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
+      time: 0.33263978
       value: 1
       inSlope: 0
       outSlope: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.55
-      value: -0.1
+      time: 0.36590376
+      value: -0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -91,7 +91,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.6
+      time: 0.39916778
       value: 0
       inSlope: 0.085346885
       outSlope: 0.085346885
@@ -100,7 +100,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.49895966
       value: 0
       inSlope: 0
       outSlope: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.825
-      value: 0.15
+      time: 0.54885566
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -118,7 +118,16 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.9
+      time: 0.5987516
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.66527957
       value: 0
       inSlope: 0
       outSlope: 0

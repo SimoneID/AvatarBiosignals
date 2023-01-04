@@ -38,11 +38,11 @@ public class SpawnObject : MonoBehaviour
 
     public void ChooseFirstList()
     {
-        chosenList = Block4;
+        chosenList = Block3;
         firstBlock = true;
 
         ListOfLists.Add(Block2);
-        ListOfLists.Add(Block3);
+        ListOfLists.Add(Block4);
         ListOfLists.Add(Block1);
         Debug.Log($"The ListofLists consits of {ListOfLists.Count} items");
     }

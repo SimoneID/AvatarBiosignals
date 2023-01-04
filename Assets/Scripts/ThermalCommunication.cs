@@ -24,8 +24,7 @@ public class ThermalCommunication : MonoBehaviour
     void Start()
     {
         _time = 0f;
-        //StartCoroutine(PostRequest($"http://{hostNameToContact}/power")); //to set heating power
-        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "0")); //to set target temperature using PID
+        //StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "0")); //to set target
     }
 
     void Update()
@@ -52,27 +51,70 @@ public class ThermalCommunication : MonoBehaviour
     {
         Vector2 playerLoc = new Vector2(MainCamera.transform.position.x, MainCamera.transform.position.z);
         avatarDistance = Vector2.Distance(GameObject.Find("AvatarSpawner").GetComponent<SpawnAvatar>().avatarFlatLocation, playerLoc);
+
         if (avatarDistance < 0.46)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "44"));
+            //StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "44"));
+            if (currentTemp > 44.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "20"));
+            }
+            else if (currentTemp <= 44.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "110"));
+            }
+            communicatedTemp = "44";
         }
         else if (avatarDistance >= 0.46 && avatarDistance < 1.22)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "42"));
+            //StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "42"));
+            if (currentTemp > 42.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "20"));
+            }
+            else if (currentTemp <= 42.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "110"));
+            }
+            communicatedTemp = "42";
         }
         else if (avatarDistance >= 1.22 && avatarDistance < 3.70)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "38"));
+            //StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "40")); //36 P1 & P2
+            if (currentTemp > 40.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "10"));
+            }
+            else if (currentTemp <= 40.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "110"));
+            }
+            communicatedTemp = "40";
         }
         else if (avatarDistance >= 3.70)
         {
-            StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "34"));
+            //StartCoroutine(PostRequest($"http://{hostNameToContact}/temperature", "36")); //30 P1 & P2
+            if (currentTemp > 36.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "10"));
+            } else if (currentTemp <= 36.00)
+            {
+                StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "110"));
+            }
+            communicatedTemp = "36";
         }
     }
 
     public void setNeuTemp()
     {
-        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "0"));
+        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "-1"));
+        communicatedTemp = "none";
+    }
+
+    public void setCoolingTemp()
+    {
+        StartCoroutine(PostRequest($"http://{hostNameToContact}/power", "-80"));
+        communicatedTemp = "cool";
     }
 
     IEnumerator GetRequest(string uri)
@@ -114,7 +156,7 @@ public class ThermalCommunication : MonoBehaviour
             else
             {
                 Debug.Log($"Form upload complete with temp: {target}!");
-                communicatedTemp = target;
+                //communicatedTemp = target;
             }
         }
     }
